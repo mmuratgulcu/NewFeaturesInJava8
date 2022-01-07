@@ -5,7 +5,17 @@ import java.io.IOException;
 
 public class TryWithResourcesExample {
     public static void main(String[] args) {
-        moreObjectTryWithResources();
+
+
+        try(FileWriter fileWriter = new FileWriter("file.text")){
+
+
+            fileWriter.write("test");
+
+
+        }catch (IOException exception){
+
+        }
     }
 
     public static void finallyClosed(){
@@ -25,13 +35,18 @@ public class TryWithResourcesExample {
             }
         }
     }
+
+
     public static void tryWithResources(){
+
+
         try(FileWriter fileWriter = new FileWriter("file.text")){
             fileWriter.write("test");
         }catch (IOException exception){
 
         }
     }
+
     public static void customObjectTryWithResources(){
         try(Computer person = new Computer()){
 
@@ -39,6 +54,7 @@ public class TryWithResourcesExample {
 
         }
     }
+
     public static void moreObjectTryWithResources(){
         try(Person person = new Person(1);
             Person person2 = new Person(2)){

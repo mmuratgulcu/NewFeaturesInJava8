@@ -9,13 +9,13 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
 
-public class FilesExample {
+public class _02_FilesExample {
     public static void main(String[] args) {
 
     }
 
     public static void createFile() {
-        Path path = Paths.get("test.txt");
+        Path path = Paths.get("test2.txt");
 
         if (!Files.exists(path)) { //Dosyanın var olup olmadığını kontrol etmekte.
             try {
@@ -56,7 +56,7 @@ public class FilesExample {
 
     public static void compareTo() {
         Path path = Paths.get("test.txt");
-        Path path1 = Paths.get("C:\\Users\\Kafein\\Desktop\\pure-java\\test.txt");
+        Path path1 = path.toAbsolutePath();
 
         try {
             //Pathlerin aynı folder/file'ı gösterip göstermediğini kontrol eder.
@@ -69,7 +69,7 @@ public class FilesExample {
 
     public static void copyFile() {
         Path path = Paths.get("test.txt");
-        Path path1 = Paths.get("folder/copy.txt");
+        Path path1 = Paths.get("folder/sub/copy.txt");
         if (!Files.exists(path1)) {
             try {
                 Files.createDirectories(path1.getParent());
@@ -78,10 +78,12 @@ public class FilesExample {
             }
         }
         try {
-            Files.copy(path, path1, StandardCopyOption.REPLACE_EXISTING);
+            //Dosya yoksa yazar, varsa exception fırlatır.
+            Files.copy(path, path1);
+
+            //Files.copy(path, path1, StandardCopyOption.REPLACE_EXISTING);
             //StandardCopyOption.REPLACE_EXISTING
             //Mevcut dosya varsa onu ezerek üzerine yazmasını sağlar.
-            //Kullanılmazsa olusturmak istenen dosya zaten varsa exception fırlatır.
         } catch (IOException e) {
             e.printStackTrace();
         }

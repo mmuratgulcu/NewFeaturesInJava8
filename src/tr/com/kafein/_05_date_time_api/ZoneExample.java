@@ -1,11 +1,14 @@
 package tr.com.kafein._05_date_time_api;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 public class ZoneExample {
     public static void main(String[] args) {
+
         withZoneSameInstant();
+
     }
 
     public static void createZoneIdOf(){
@@ -54,14 +57,17 @@ public class ZoneExample {
     }
 
     public static void withZoneSameInstant(){
-        ZonedDateTime istanbul = ZonedDateTime.of(LocalDate.now(),LocalTime.now(),ZoneId.of("Asia/Istanbul"));
-        System.out.println(istanbul);
+        System.out.println(ZonedDateTime.now().toLocalTime());
+        System.out.println(ZonedDateTime.now(ZoneId.of("Asia/Singapore")).toLocalTime());
 
-        ZonedDateTime paris = ZonedDateTime.now(ZoneId.of("Europe/Paris"));
-        System.out.println(paris);
+        ZonedDateTime departure = ZonedDateTime.of(LocalDateTime.of(2021,Month.JANUARY,9,10,15),
+                ZoneId.of("Asia/Istanbul"));
 
-        //İstanbulda belirtilen tarih ve saatte iken pariste tarih ve saat kaçtır onu hesaplar.
-        System.out.println(istanbul.withZoneSameInstant(ZoneId.of("Europe/Paris")));
+        System.out.println("Depature: " + departure.format(DateTimeFormatter.ofPattern("dd MMM yyyy hh.mm a")));
+
+        ZonedDateTime arrival = departure.withZoneSameInstant(ZoneId.of("Asia/Singapore")).plusHours(5);
+
+        System.out.println("Arrival:" + arrival.format(DateTimeFormatter.ofPattern("dd MMM yyyy hh.mm a")));
 
     }
 

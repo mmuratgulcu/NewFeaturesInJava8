@@ -42,6 +42,7 @@ public class ConcurrentCollectionExample01 {
         fooData.put("flamingo",2);
 
         for (String s : fooData.keySet()) {
+            System.out.println(s + " - " +  fooData.get(s));
             fooData.remove(s);
         }
     }
@@ -52,6 +53,7 @@ public class ConcurrentCollectionExample01 {
         fooData.put("flamingo",2);
 
         for (String s : fooData.keySet()) {
+            System.out.println(s + " - " +  fooData.get(s));
             fooData.remove(s);
         }
 

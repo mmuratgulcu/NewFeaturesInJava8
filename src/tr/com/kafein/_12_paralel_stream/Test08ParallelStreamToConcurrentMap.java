@@ -11,7 +11,7 @@ public class Test08ParallelStreamToConcurrentMap {
 		ConcurrentMap<Integer, String> map = stream1
 				.collect(Collectors.toConcurrentMap(String::length, k -> k, (s1, s2) -> s1 + "," + s2));
 		
-		System.out.println(map); // {5=lions,bears, 6=tigers}
-		System.out.println(map.getClass()); // java.util.concurrent.ConcurrentHashMap
+		System.out.println(map);
+		System.out.println(map.getClass());
 	}
 }

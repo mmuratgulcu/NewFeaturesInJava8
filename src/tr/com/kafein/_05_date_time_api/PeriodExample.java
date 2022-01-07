@@ -6,7 +6,9 @@ import java.time.Period;
 
 public class PeriodExample {
     public static void main(String[] args) {
+
         periodOfMethods();
+
     }
 
     public static void periodBetweenExample(){

@@ -9,19 +9,21 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.function.BiPredicate;
 import java.util.stream.Stream;
 
-public class PathFileStreamExample {
+public class _04_PathFileStreamExample {
     public static void main(String[] args) throws IOException {
         streamLinesMethod();
     }
 
     public static void streamListMethod() throws IOException {
+        //current dizininde var olan dosyaları getirir.
         try (Stream<Path> entries = Files.list(Paths.get("."))) {
             //entries.forEach(System.out::println);
-            //entries.forEach(x -> System.out.println(x.getFileName()));
-            entries.forEach(x -> System.out.println(x.toAbsolutePath().normalize()));
+            entries.forEach(x -> System.out.println(x.getFileName()));
+            //entries.map(path -> path.toAbsolutePath().normalize()).forEach(System.out::println);
         }
 
-        System.out.println("old way!");
+        System.out.println("*************old way!****************");
+
         File files = new File(".");
         File[] fileArray = files.listFiles();
 
@@ -31,21 +33,21 @@ public class PathFileStreamExample {
     }
 
     public static void streamWalkMethod() throws IOException {
-        //parent dosyalarıda gezer.
+        //sub dosyalarıda gezmekte
         Stream<Path> stream = Files.walk(Paths.get("."));
         stream.forEach(System.out::println);
         stream.close();
 
         //maxDepth ile derinlik kısıtlaması getirebiliriz.
         Stream<Path> stream2 = Files.walk(Paths.get("."), 2);
-        stream.forEach(System.out::println);
+        stream2.forEach(System.out::println);
         stream2.close();
     }
 
     public static void streamFindMethod() throws IOException {
 
         BiPredicate<Path, BasicFileAttributes> matcher = (path, attribute) ->
-                attribute.isDirectory() || path.toString().endsWith("class");
+                attribute.isDirectory() && path.toString().endsWith("folder");
 
         try (Stream<Path> stream = Files.find(Paths.get("."), 2, matcher)) {
             stream.forEach(System.out::println);

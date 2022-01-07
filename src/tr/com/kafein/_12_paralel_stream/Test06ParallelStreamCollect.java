@@ -11,7 +11,5 @@ public class Test06ParallelStreamCollect {
 		Stream<String> stream = Stream.of("w", "o", "l", "f").parallel();
 		Set<String> set = stream.collect(Collectors.toSet());
 		System.out.println(set);
-
-		//[f, w, l, o]
 	}
 }

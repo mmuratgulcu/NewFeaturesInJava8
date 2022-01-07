@@ -4,8 +4,11 @@ import java.time.*;
 
 public class InstantExample {
     public static void main(String[] args) {
-        createInstantNow();
-        toEpochMilli();
+
+        Instant now = Instant.now();
+        long l = now.toEpochMilli();
+        System.out.println(l);
+
     }
 
     public static void createInstantNow(){

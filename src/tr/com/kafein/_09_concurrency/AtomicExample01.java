@@ -24,21 +24,22 @@ public class AtomicExample01 {
     }
 
     public static void main(String[] args) throws InterruptedException {
+
         Thread[] incrementerThread = new Increment[1000];
-        Thread[] decrementerThread = new Decrement[1000];
+        Thread[] decrementThread = new Decrement[1000];
 
         for (int i = 0; i < 1000; i++) {
             incrementerThread[i] = new Increment();
-            decrementerThread[i] = new Decrement();
+            decrementThread[i] = new Decrement();
             incrementerThread[i].start();
-            decrementerThread[i].start();
+            decrementThread[i].start();
         }
 
         // Bir thread join() metodunu çağırır ise o an çalışan thread join() metodunu çağıran threadin bitmesini bekler.
         // Join’i çağıran thread işini bitirdikten sonra bekleyen thread çalışmaya devam eder.
         for (int i = 0; i < 1000; i++) {
             incrementerThread[i].join();
-            decrementerThread[i].join();
+            decrementThread[i].join();
         }
 
         System.out.println("Integer value : " + integer);

@@ -9,7 +9,9 @@ import java.time.temporal.ChronoField;
 
 public class LocalDateExample {
     public static void main(String[] args) {
-        getMethod();
+
+
+
     }
 
     public static void createDateNow() {
@@ -127,7 +129,7 @@ public class LocalDateExample {
 
     public static void ofYearDay() {
         // 2020'nin 150. gününün denk geldiği tarih bilgisini dönmektedir.
-        LocalDate localDate = LocalDate.ofYearDay(2020, 150);
+        LocalDate localDate = LocalDate.ofYearDay(2022, 150);
         System.out.println(localDate);
     }
 

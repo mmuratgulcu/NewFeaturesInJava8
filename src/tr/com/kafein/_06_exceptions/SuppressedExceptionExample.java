@@ -2,24 +2,26 @@ package tr.com.kafein._06_exceptions;
 
 public class SuppressedExceptionExample {
     public static void main(String[] args) {
-
+        getProductSuppressedExceptionMethod();
     }
     public static void nonProductSuppressedExceptionMethod(){
         try(Product product = new Product()){
             System.out.println("try block..!");
-            throw new IllegalArgumentException("Illegal argument exception"); //Birinci exception
+            throw new IllegalArgumentException("First Illegal argument exception"); //Birinci exception
         }catch (Exception exception){
             System.out.println("catch block..!");
             System.out.println(exception.getMessage());
         }
     }
+
     public static void getProductSuppressedExceptionMethod(){
         try(Product product = new Product()){
             System.out.println("try block..!");
-            throw new IllegalArgumentException("Illegal argument exception"); //Birinci exception
+            throw new IllegalArgumentException(" First Illegal argument exception"); //Birinci exception
         }catch (Exception exception){
             System.out.println("catch block..!");
             System.out.println(exception.getMessage());
+
             for (Throwable throwable : exception.getSuppressed()) {
                 System.out.println(throwable.getMessage());
             }

@@ -9,15 +9,10 @@ public class Test02CyclicBarrier {
 
 	public static void main(String[] args) {
 
-		// If you are using a thread pool, make sure that you set the number of
-		// available threads to be at least as large as your CyclicBarrier limit
-		// value.
 		ExecutorService service = Executors.newFixedThreadPool(4);
 
 		LionPenManagerCyclic manager = new LionPenManagerCyclic();
-		//
-		// The CyclicBarrier class allows us to perform complex, multi threaded
-		// tasks, while all threads stop and wait at logical barriers.
+
 		CyclicBarrier c1 = new CyclicBarrier(4);
 
 		Runnable task = () -> manager.performTask(c1);

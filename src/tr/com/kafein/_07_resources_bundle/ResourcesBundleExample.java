@@ -6,13 +6,16 @@ import java.util.Set;
 
 public class ResourcesBundleExample {
     public static void main(String[] args) {
+        resourceBundle();
+    }
 
-        ResourceBundle resourceBundle = ResourceBundle.getBundle("config", new Locale("tr"));
+    public static void resourceBundle(){
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("message", new Locale("tr"));
 
         String message = resourceBundle.getString("key1");
         System.out.println(message);
 
-        resourceBundle = ResourceBundle.getBundle("config", Locale.ENGLISH);
+        resourceBundle = ResourceBundle.getBundle("message", Locale.ENGLISH);
 
         message = resourceBundle.getString("key1");
         System.out.println(message);

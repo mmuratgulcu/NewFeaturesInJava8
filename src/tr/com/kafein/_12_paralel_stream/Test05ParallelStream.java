@@ -12,7 +12,3 @@ public class Test05ParallelStream {
 		}).forEach(System.out::println);
 	}
 }
-
-// For the exam, you should remember that parallel streams can process results
-// independently, although the order of the results cannot be determined ahead
-// of time.

@@ -12,15 +12,17 @@ public class MultiCatchExceptionExample {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+        }catch (IllegalStateException e){
+            e.printStackTrace();
         }
 
         try {
             multiCatchExample();
-        } catch (FileNotFoundException | SQLException e) {
+        } catch (IllegalStateException | FileNotFoundException | SQLException e) {
             e.printStackTrace();
         }
 
     }
 
-    public static void multiCatchExample() throws FileNotFoundException, SQLException {}
+    public static void multiCatchExample() throws FileNotFoundException, SQLException, IllegalStateException {}
 }

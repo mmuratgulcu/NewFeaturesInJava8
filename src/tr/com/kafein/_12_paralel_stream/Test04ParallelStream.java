@@ -26,17 +26,15 @@ class WhaleDataCalculator {
 public class Test04ParallelStream {
 
 	public static void main(String[] args) {		
-		//
+
 		WhaleDataCalculator calculator = new WhaleDataCalculator();
 		// Define the data
 		List<Integer> data = new ArrayList<Integer>();
 		for (int i = 0; i < 4000; i++)
 			data.add(i);
-		// Process the data
 		long start = System.currentTimeMillis();
 		//calculator.processAllData(data);
 
-		//Even better, the results scale with the number of processors.
 		calculator.processAllDataParallel(data);
 		double time = (System.currentTimeMillis() - start) / 1000.0;
 		// Report results

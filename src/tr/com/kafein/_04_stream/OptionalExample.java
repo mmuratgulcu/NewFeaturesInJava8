@@ -4,8 +4,8 @@ import java.util.Optional;
 
 public class OptionalExample {
     public static void main(String[] args) {
-        Optional<Integer> opt = Optional.of(123);
-        orElseAndOrElseThrow();
+
+
     }
 
     public static void creatingOptional() {
@@ -35,10 +35,11 @@ public class OptionalExample {
     }
 
     public static void orElseAndOrElseThrow(){
-        Optional<String> opt1 = Optional.empty();
+        Optional<String> opt1 = Optional.of("data");
+
 
         System.out.println(opt1.map(String::length));
-        System.out.println(opt1.map(String::length).orElse(-1));
+        System.out.println(opt1.map(String::length).filter(x->x == 9).orElse(-1));
 
         System.out.println(opt1.map(String::length).orElseThrow(RuntimeException::new));
 

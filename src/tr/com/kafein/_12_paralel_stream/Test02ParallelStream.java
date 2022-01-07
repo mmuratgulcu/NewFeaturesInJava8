@@ -9,5 +9,6 @@ public class Test02ParallelStream {
 
 		Stream<Integer> parallelStream = Arrays.asList(1, 2, 3, 4, 5, 6).parallelStream();
 		System.out.println(parallelStream.count());
+
 	}
 }

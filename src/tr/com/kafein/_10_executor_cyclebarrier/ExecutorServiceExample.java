@@ -38,6 +38,7 @@ public class ExecutorServiceExample {
         //Thread oluşturduk.
         ExecutorService service = Executors.newSingleThreadExecutor();
         //Basit bir task verdik
+
         Future<?> future = service.submit(() -> {
             System.out.println("ExecutorService#submit");
             try {
@@ -49,8 +50,8 @@ public class ExecutorServiceExample {
 
         //Threadi durdurduk.
         service.shutdown(); // executor üzerinde bir task var ise onu bitirmesini bekler.
-        // service.shutDownNow(); // executor üzerinde bir taskın olup olmadığna bakmaksızın stop eder.
-        // service.awaitTermination(1, TimeUnit.SECONDS) // executor'ın 5 sn sonra kapanmasını sağlar.
+        //service.shutDownNow(); // executor üzerinde bir taskın olup olmadığna bakmaksızın stop eder.
+        service.awaitTermination(5, TimeUnit.SECONDS); // executor'ın 5 sn sonra kapanmasını sağlar.
         //
         System.out.println("isDone : " + future.isDone());
         System.out.println("isShutdown : " + service.isShutdown());
@@ -87,9 +88,7 @@ public class ExecutorServiceExample {
             System.out.println(future.get());
             System.out.println(future.isDone());
             System.out.println(future.isCancelled());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         } finally {
             if (service != null)
@@ -163,6 +162,7 @@ public class ExecutorServiceExample {
     }
 
     public static void threadPoolExample() throws InterruptedException {
+
         ExecutorService service = Executors.newFixedThreadPool(4);
 
         Callable<String> task1 = () -> {
@@ -197,6 +197,7 @@ public class ExecutorServiceExample {
             service.shutdown();
         }
     }
+
     public static void printNumbers(){
         for (int i = 0; i < 2; i++) {
             System.out.println("i: "+ i + " , "+ Thread.currentThread().getName());

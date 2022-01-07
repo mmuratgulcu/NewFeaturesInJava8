@@ -4,6 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 class LionPenManager {
+
 	private void removeAnimals() {
 		System.out.println("Removing animals" + Thread.currentThread().getName());
 	}

@@ -7,7 +7,7 @@ public class ChronoUnitExample {
     public static void main(String[] args) {
 
         LocalTime localTime = LocalTime.of(5,15);
-        LocalTime localTime1 = LocalTime.of(6,16);
+        LocalTime localTime1 = LocalTime.of(8,17);
 
         System.out.println(ChronoUnit.HOURS.between(localTime,localTime1));
 

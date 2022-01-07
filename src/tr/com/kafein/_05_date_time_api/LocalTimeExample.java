@@ -6,7 +6,12 @@ import java.time.format.DateTimeFormatter;
 
 public class LocalTimeExample {
     public static void main(String[] args) {
-        compareTimes();
+
+        LocalTime now = LocalTime.now();
+
+        
+
+
     }
 
     public static void createTimeNow() {
