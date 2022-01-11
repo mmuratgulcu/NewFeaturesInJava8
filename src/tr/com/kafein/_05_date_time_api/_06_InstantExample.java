@@ -2,12 +2,10 @@ package tr.com.kafein._05_date_time_api;
 
 import java.time.*;
 
-public class InstantExample {
+public class _06_InstantExample {
     public static void main(String[] args) {
 
-        Instant now = Instant.now();
-        long l = now.toEpochMilli();
-        System.out.println(l);
+
 
     }
 

@@ -1,25 +1,22 @@
 package tr.com.kafein._02_lambda;
 
 public class LambdaTest05 {
+
     String firstname;
+
     public static void main(String[] args) {
+        LambdaTest05 lambda = new LambdaTest05();
 
-        localeVariable();
-        instanceVariable();
-    }
-
-    public static void localeVariable(){
         String name = "Edi";
         //name = "compileError";
-        LambdaMessage lambdaLocalVariableMessage = (String str) -> System.out.println(name + " " + str);
-        lambdaLocalVariableMessage.printMessage("Büdü");
-    }
+        LambdaMessage lambdaLocalVariableMessage = (String str) ->
+                System.out.println(name + " " + str);
 
-    public static void instanceVariable(){
-        LambdaTest05 lambda = new LambdaTest05();
+        lambdaLocalVariableMessage.printMessage("Büdü");
+
         lambda.firstname = "John";
         lambda.firstname = "Alice";
-        lambda.firstname="Murat";
+        lambda.firstname="Foo";
 
         LambdaMessage lambdaObjectVariableMessage = (String str) ->
                 System.out.println(lambda.firstname + " " + str);

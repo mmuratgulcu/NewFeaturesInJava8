@@ -7,33 +7,29 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 
-public class LocalDateExample {
+public class _02_LocalDateExample {
     public static void main(String[] args) {
 
-
+        parseOfDateToString();
 
     }
 
     public static void createDateNow() {
-        System.out.println("now metodu ile tarih oluşturma");
         LocalDate localDate = LocalDate.now();
-        System.out.println(localDate);
+        System.out.println("Current Local Date : " + localDate);
         localDate = LocalDate.now(ZoneId.of("Asia/Kolkata"));
-        System.out.println(localDate);
+        System.out.println("Current Asia/Kolkata Date : " + localDate);
     }
 
     public static void createDateOf() {
-        System.out.println("now metodu ile tarih oluşturma");
         LocalDate localDate = LocalDate.of(2020, 4, 20);
-        System.out.println(localDate);
-        // Ay ve gün değerlerinin karışmaması için ay bilgisini enum olarak almaktadır.
+        System.out.println("Custom Date : " + localDate);
         localDate = LocalDate.of(2020, Month.APRIL, 20);
-        System.out.println(localDate);
+        System.out.println("Custom Date : " + localDate);
     }
 
     public static void epochOfDay() {
-        // 1 Ocak 1970'ten 1000 gün sonrasının tarih bilgisini verecektir.
-        LocalDate localDate = LocalDate.ofEpochDay(5);
+        LocalDate localDate = LocalDate.ofEpochDay(1);
         System.out.println(localDate);
     }
 
@@ -59,7 +55,7 @@ public class LocalDateExample {
 
     public static void parseOfDateToString() {
         LocalDate localDate = LocalDate.now();
-        System.out.println(localDate);
+        System.out.println("Current Date : " + localDate);
 
         String date = localDate.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
         System.out.println(date);
@@ -81,28 +77,23 @@ public class LocalDateExample {
         LocalDate localDate = LocalDate.now();
         System.out.println("Bugünün tarihi : " + localDate);
 
-        // Sistem tarihine 2 gün ekler.
         localDate = localDate.plusDays(2);
         System.out.println("2 gün eklendi : " + localDate);
 
-        // Sistem tarihine 2 hafta ekler.
         localDate = localDate.plusWeeks(2);
         System.out.println("2 hafta eklendi : " + localDate);
 
-        // Sistem tarihine 1 ay ekler.
         localDate = localDate.plusMonths(1);
         System.out.println("1 ay eklendi : " + localDate);
 
-        // Sistem tarihine 2 yıl ekler.
         localDate = localDate.plusYears(2);
         System.out.println("2 yıl eklendi : " + localDate);
 
-        // Ayrı ayrı kullanılabileceği gibi birleşik bir şekilde de kullanılabilir.
         localDate = LocalDate.now().plusDays(2).plusWeeks(2).plusMonths(1).plusYears(2);
         System.out.println("Sonuc : " + localDate);
     }
 
-    public static void minusMethod(){
+    public static void minusMethod() {
         LocalDate localDate = LocalDate.now();
         System.out.println("Bugünün tarihi : " + localDate);
 
@@ -124,7 +115,7 @@ public class LocalDateExample {
 
         // Ayrı ayrı kullanılabileceği gibi birleşik bir şekilde de kullanılabilir.
         localDate = localDate.minusDays(2).minusWeeks(2).minusMonths(1).minusYears(2);
-        System.out.println("Sonuc : " +localDate);
+        System.out.println("Sonuc : " + localDate);
     }
 
     public static void ofYearDay() {
@@ -150,7 +141,7 @@ public class LocalDateExample {
         }
     }
 
-    public static void compareDates(){
+    public static void compareDates() {
         LocalDate tarih1 = LocalDate.of(2017, Month.MAY, 14);
         LocalDate tarih2 = LocalDate.of(2016, Month.MAY, 15);
 
@@ -169,13 +160,13 @@ public class LocalDateExample {
         }
     }
 
-    public static void getMethod(){
+    public static void getMethod() {
         LocalDate localDate = LocalDate.now();
         System.out.println("Bugünün tarihi : " + localDate);
 
         DayOfWeek week = localDate.getDayOfWeek();
-        int dayOfWeek =	localDate.getDayOfWeek().getValue();
-        System.out.println("Bugün haftanın "+ dayOfWeek+". günü " + week+"'dir.");
+        int dayOfWeek = localDate.getDayOfWeek().getValue();
+        System.out.println("Bugün haftanın " + dayOfWeek + ". günü " + week + "'dir.");
         System.out.println(localDate.get(ChronoField.DAY_OF_WEEK));
 
         Month month = localDate.getMonth();
@@ -183,13 +174,13 @@ public class LocalDateExample {
         int getDayOfMonth = localDate.getDayOfMonth();
         int lenghtOfMonth = localDate.lengthOfMonth();
 
-        System.out.println("Senenin " + monthValue+ ". ayı olan "+month+"'ın " + getDayOfMonth+". günündeyiz. Bu ay toplam "+
+        System.out.println("Senenin " + monthValue + ". ayı olan " + month + "'ın " + getDayOfMonth + ". günündeyiz. Bu ay toplam " +
                 lenghtOfMonth + " gündür.");
 
         int year = localDate.getYear();
         int dayOfYear = localDate.getDayOfYear();
         int lengthOfYear = localDate.lengthOfYear();
-        System.out.println(year+" yılının "+dayOfYear+". günüdür. Bu yıl toplam "+ lengthOfYear + " gündür.");
+        System.out.println(year + " yılının " + dayOfYear + ". günüdür. Bu yıl toplam " + lengthOfYear + " gündür.");
         System.out.println(localDate.get(ChronoField.DAY_OF_YEAR));
     }
 }

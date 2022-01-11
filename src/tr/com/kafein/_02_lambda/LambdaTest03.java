@@ -9,6 +9,11 @@ public class LambdaTest03 {
 
         Message lamMessage =  System.out::println;
 
+        lambda1.printMessage("Kafein");
+        lambda2.printMessage("Kafein");
+        lambda3.printMessage("Kafein");
+        lamMessage.printMessage("Kafein");
+
     }
 }
 

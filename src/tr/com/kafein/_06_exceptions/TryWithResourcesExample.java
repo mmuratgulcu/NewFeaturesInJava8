@@ -1,81 +1,77 @@
 package tr.com.kafein._06_exceptions;
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class TryWithResourcesExample {
     public static void main(String[] args) {
-
-
-        try(FileWriter fileWriter = new FileWriter("file.text")){
-
-
-            fileWriter.write("test");
-
-
-        }catch (IOException exception){
-
-        }
+        customObjectTryWithResources();
     }
 
-    public static void finallyClosed(){
-        FileWriter fileWriter = null;
-        try{
-            fileWriter = new FileWriter("file.text");
-            fileWriter.write("test");
-        }catch (IOException e){
+    public static void finallyClosed() {
 
-        }finally {
+        FileWriter fileWriter = null;
+        FileReader fileReader = null;
+        try {
+            fileWriter = new FileWriter("file.txt");
+            fileWriter.write("test");
+            fileReader = new FileReader("test.txt");
+            while (fileReader.read() != -1) {
+                System.out.println((char) fileReader.read());
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } finally {
             try {
-                if(fileWriter !=null){
+                if (fileWriter != null) {
                     fileWriter.close();
+                }
+                if (fileReader != null) {
+                    fileReader.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+
     }
 
+    public static void tryWithResources() {
 
-    public static void tryWithResources(){
-
-
-        try(FileWriter fileWriter = new FileWriter("file.text")){
+        try (FileWriter fileWriter = new FileWriter("file.txt");
+             FileReader fileReader = new FileReader("test.txt")) {
             fileWriter.write("test");
-        }catch (IOException exception){
-
+            while (fileReader.read() != -1) {
+                System.out.println((char) fileReader.read());
+            }
+        } catch (IOException exception) {
+            System.out.println(exception.getMessage());
         }
+
     }
 
-    public static void customObjectTryWithResources(){
-        try(Computer person = new Computer()){
+    public static void customObjectTryWithResources() {
 
-        }catch (IOException exception){
+        try (Person person = new Person(1);
+             Person person2 = new Person(2);
+             Computer computer = new Computer()) {
 
-        }
-    }
-
-    public static void moreObjectTryWithResources(){
-        try(Person person = new Person(1);
-            Person person2 = new Person(2)){
-
-        }catch (IOException exception){
+        } catch (IOException exception) {
 
         }
     }
 }
 
-class Computer implements AutoCloseable{
+class Computer implements AutoCloseable {
 
-    //Computer sınıfını try-with-resources özelliğinde kullanabilmek için AutoCloseable implemente etmesi gerekir.
-    //Throws edeceği Excepiton parent classta fırlatılan exceptiondan daha düşük levelda olmalıdır.
     @Override
     public void close() throws IOException {
-
+        System.out.println("Shutdown Computer");
     }
 }
 
-class Person implements AutoCloseable{
+class Person implements AutoCloseable {
 
     private int id;
 
@@ -85,6 +81,7 @@ class Person implements AutoCloseable{
 
     @Override
     public void close() throws IOException {
-        System.out.println("Shutdown " + id);
+        System.out.println("Shutdown Person" + id);
     }
+
 }

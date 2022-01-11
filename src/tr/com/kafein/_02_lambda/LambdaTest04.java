@@ -3,21 +3,17 @@ package tr.com.kafein._02_lambda;
 public class LambdaTest04 {
     public static void main(String[] args) {
 
-        Calculator calculator = (number1, number2) -> {
+        Calculator calculator = (int number1, int number2) -> number1+ number2;
+
+        Calculator calculator2 = (number1, number2) -> {
             System.out.println("Toplama İşlemi");
             return number1+ number2;
         };
 
-        Calculator calculator1 = (int number1, int number2) -> number1+ number2;
-
-        Calculator calculator2 = Integer::sum;
-
-        Calculator calculator3 = ((number1, number2) -> {
-            return number1+number2;
-        });
+        Calculator calculator3 = Integer::sum;
 
         int total;
-        total = calculator.operation(5,6);
+        total = calculator3.operation(5,6);
         System.out.println(total);
     }
 }
@@ -25,6 +21,5 @@ public class LambdaTest04 {
 @FunctionalInterface
 interface Calculator {
     int operation(int number1, int number2);
-
 }
 

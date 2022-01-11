@@ -3,7 +3,7 @@ package tr.com.kafein._05_date_time_api;
 import java.time.Duration;
 import java.time.LocalTime;
 
-public class DurationExample {
+public class _08_DurationExample {
     public static void main(String[] args) {
         durationOfMethods();
     }
@@ -17,6 +17,8 @@ public class DurationExample {
 
         System.out.println(duration);
         System.out.println(duration2);
+
+
     }
 
     public static void durationOfMethods(){

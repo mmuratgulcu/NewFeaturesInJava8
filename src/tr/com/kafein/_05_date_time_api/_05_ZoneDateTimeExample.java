@@ -2,29 +2,10 @@ package tr.com.kafein._05_date_time_api;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.Set;
 
-public class ZoneExample {
+public class _05_ZoneDateTimeExample {
     public static void main(String[] args) {
-
-        withZoneSameInstant();
-
-    }
-
-    public static void createZoneIdOf(){
-        ZoneId zoneId = ZoneId.of("Europe/Paris");
-        System.out.println(zoneId);
-        System.out.println(zoneId.getRules());
-    }
-
-    public static void getDefaultZoneId(){
-        ZoneId zoneId = ZoneId.systemDefault();
-        System.out.println(zoneId);
-    }
-
-    public static void getAllZoneId(){
-        Set<String> zoneIds = ZoneId.getAvailableZoneIds();
-        zoneIds.forEach(System.out::println);
+        createZonedDateTimeNow();
     }
 
     public static void createZonedDateTimeNow(){
@@ -37,11 +18,11 @@ public class ZoneExample {
         LocalTime localTime = zonedDateTime.toLocalTime();
         System.out.println(localTime);
 
-        ZoneId zoneId = zonedDateTime.getZone();
-        System.out.println(zoneId);
-
         LocalDateTime localDateTime = zonedDateTime.toLocalDateTime();
         System.out.println(localDateTime);
+
+        ZoneId zoneId = zonedDateTime.getZone();
+        System.out.println(zoneId);
     }
 
     public static void createZonedDateTimeOf(){
@@ -53,7 +34,6 @@ public class ZoneExample {
 
         zonedDateTime = ZonedDateTime.of(localDateTime.toLocalDate(),localDateTime.toLocalTime(),zoneId);
         System.out.println(zonedDateTime);
-
     }
 
     public static void withZoneSameInstant(){
@@ -70,5 +50,4 @@ public class ZoneExample {
         System.out.println("Arrival:" + arrival.format(DateTimeFormatter.ofPattern("dd MMM yyyy hh.mm a")));
 
     }
-
 }

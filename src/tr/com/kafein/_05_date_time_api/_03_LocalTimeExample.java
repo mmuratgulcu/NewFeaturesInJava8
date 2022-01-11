@@ -1,17 +1,13 @@
 package tr.com.kafein._05_date_time_api;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-public class LocalTimeExample {
+public class _03_LocalTimeExample {
     public static void main(String[] args) {
-
-        LocalTime now = LocalTime.now();
-
-        
-
-
+        System.out.println(LocalDate.ofEpochDay(1000));
     }
 
     public static void createTimeNow() {

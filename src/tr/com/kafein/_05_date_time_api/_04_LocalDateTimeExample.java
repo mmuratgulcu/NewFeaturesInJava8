@@ -1,9 +1,10 @@
 package tr.com.kafein._05_date_time_api;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 
-public class LocalDateTimeExample {
+public class _04_LocalDateTimeExample {
     public static void main(String[] args) {
 
 
@@ -46,6 +47,13 @@ public class LocalDateTimeExample {
     public static void parseMethod(){
         LocalDateTime localDateTime = LocalDateTime.parse("2021-12-15T13:43:02.154");
         System.out.println(localDateTime);
+    }
+
+    public static void formatMethod(){
+        LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println(localDateTime);
+        String format = localDateTime.format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss:A"));
+        System.out.println(format);
     }
 
     public static void toLocaleDate(){
