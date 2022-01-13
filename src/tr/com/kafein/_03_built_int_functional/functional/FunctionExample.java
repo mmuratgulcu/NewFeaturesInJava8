@@ -36,13 +36,12 @@ public class FunctionExample {
         Function<String, String> f1 = String::toUpperCase;
         Function<String, String> f2 = x -> x.toUpperCase();
         System.out.println(f1.apply("test"));
+
+
         // public char[] toCharArray() {
         Function<String, char[]> f3 = x -> x.toCharArray();
         Function<String, char[]> f4 = String::toCharArray;
         System.out.println(f3.apply("test"));
 
-        //  public int length()
-        Function<String, Integer> f5 = String::length;
-        System.out.println("test");
     }
 }

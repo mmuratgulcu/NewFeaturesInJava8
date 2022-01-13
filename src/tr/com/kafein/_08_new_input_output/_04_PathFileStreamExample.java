@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 public class _04_PathFileStreamExample {
     public static void main(String[] args) throws IOException {
-        streamLinesMethod();
+        streamFindMethod();
     }
 
     public static void streamListMethod() throws IOException {
@@ -47,9 +47,9 @@ public class _04_PathFileStreamExample {
     public static void streamFindMethod() throws IOException {
 
         BiPredicate<Path, BasicFileAttributes> matcher = (path, attribute) ->
-                attribute.isDirectory() && path.toString().endsWith("folder");
+                attribute.isRegularFile() && path.toString().endsWith("docx");
 
-        try (Stream<Path> stream = Files.find(Paths.get("."), 2, matcher)) {
+        try (Stream<Path> stream = Files.find(Paths.get("."), 3, matcher)) {
             stream.forEach(System.out::println);
         }
     }

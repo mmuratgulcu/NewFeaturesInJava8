@@ -5,7 +5,7 @@ import java.util.function.Function;
 
 public class BiFunctionExample {
     public static void main(String[] args) {
-        test01();
+        test02();
     }
 
     public static void test01() {
@@ -20,9 +20,11 @@ public class BiFunctionExample {
 
     public static void test02() {
         // public static int compare(double d1, double d2)
-        BiFunction<Double, Double, Integer> bif1 = Double::compare;
+        BiFunction<Double, Double, Integer> bif1 = (d1,d2) -> Double.compare(d1,d2);
         //
         // public int compareTo(Double anotherDouble)
+
+        System.out.println(bif1.apply(3.2,3.3));
 
         BiFunction<Double, Double, Integer> bif2 = Double::compareTo;
     }

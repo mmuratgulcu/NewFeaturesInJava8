@@ -12,7 +12,21 @@ public class IntermediateOperators {
 
     public static void main(String[] args) {
 
-        generate();
+    }
+
+    public static void limit() {
+        // Stream.of(1, 2, 3, 4, 5).limit(3).forEach(System.out::println).forEach(System.out::println);
+    }
+
+    public static void generate() {
+        //infinite loop
+        //Stream.generate(() -> "Elsa").filter(n -> n.length() == 4).sorted().limit(2).forEach(System.out::println);
+        Stream.generate(() -> "Elsa").filter(n -> n.length() == 4).limit(2).sorted().forEach(System.out::println);
+    }
+
+    public static void iterate(){
+        Stream<Integer> s = Stream.iterate(10, n -> n + 3);
+        s.skip(3).limit(5).forEach(System.out::println);
     }
 
     public static void filter() {
@@ -34,10 +48,6 @@ public class IntermediateOperators {
         Stream.of("a", "a", "b", "c", "c").distinct().forEach(System.out::println);
     }
 
-    public static void skip() {
-        Stream.of("a", "a", "b", "c", "c").skip(2).forEach(System.out::println);
-    }
-
     public static void map() {
         Stream.of(1, 2, 3, 4).map(i -> i * 2).forEach(System.out::println);
 
@@ -45,6 +55,22 @@ public class IntermediateOperators {
         //double sumValue = DoubleStream.of(1.0 , 4 , 9.0).map(duo).peek(System.out::println).sum();
         double sumValue = DoubleStream.of(1.0 , 4 , 9.0).map(Math::sqrt).peek(System.out::println).sum();
         System.out.println(sumValue);
+    }
+
+    public static void peek() {
+        IntStream.rangeClosed(0, 2).peek(x -> System.out.println("Data -> " + x)).
+                map(x -> x + 1).forEach(x -> System.out.println("Güncel Data -> " + x));
+
+    }
+
+    public static void skip() {
+        Stream.of("a", "a", "b", "c", "c").skip(2).forEach(System.out::println);
+    }
+
+    public static void sorted() {
+        Stream.of("c", "T", "d", "B", "a", "z", "A").sorted().forEach(x -> System.out.print(x + " "));
+        System.out.println();
+        Stream.of("c", "T", "d", "B", "a", "z", "A").sorted(Comparator.reverseOrder()).forEach(x -> System.out.print(x + " "));
     }
 
     public static void flatMap() {
@@ -56,32 +82,5 @@ public class IntermediateOperators {
         List<Integer[]> listArray = Arrays.asList(new Integer[]{1, 2, 3}, new Integer[]{4, 5, 6});
         listArray.stream().flatMap(array -> Arrays.stream(array)).forEach(System.out::println);
 
-    }
-
-    public static void peek() {
-        IntStream.rangeClosed(0, 2).peek(x -> System.out.println("Data -> " + x)).
-                map(x -> x + 1).forEach(x -> System.out.println("Güncel Data -> " + x));
-
-    }
-
-    public static void sorted() {
-        Stream.of("c", "T", "d", "B", "a", "z", "A").sorted().forEach(x -> System.out.print(x + " "));
-        System.out.println();
-        Stream.of("c", "T", "d", "B", "a", "z", "A").sorted(Comparator.reverseOrder()).forEach(x -> System.out.print(x + " "));
-    }
-
-    public static void limit() {
-       // Stream.of(1, 2, 3, 4, 5).limit(3).forEach(System.out::println).forEach(System.out::println);
-    }
-
-    public static void generate() {
-        //infinite loop
-        //Stream.generate(() -> "Elsa").filter(n -> n.length() == 4).sorted().limit(2).forEach(System.out::println);
-        Stream.generate(() -> "Elsa").filter(n -> n.length() == 4).limit(2).sorted().forEach(System.out::println);
-    }
-
-    public static void iterate(){
-        Stream<Integer> s = Stream.iterate(10, n -> n + 3);
-        s.skip(3).limit(5).forEach(System.out::println);
     }
 }

@@ -11,6 +11,7 @@ public class LambdaTest04 {
         };
 
         Calculator calculator3 = Integer::sum;
+        Calculator calculator4 = (int number1, int number2) -> Integer.sum(number1,number2);
 
         int total;
         total = calculator3.operation(5,6);

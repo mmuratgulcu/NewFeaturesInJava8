@@ -8,7 +8,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 
 public class _03_FileAttributesExample {
     public static void main(String[] args) throws IOException {
-        test02();
+        test01();
     }
 
     public static void test01() throws IOException {
@@ -19,7 +19,7 @@ public class _03_FileAttributesExample {
         System.out.println(Files.isExecutable(folder));
         System.out.println(Files.isReadable(folder));
         System.out.println(Files.isWritable(folder));
-        System.out.println(Files.isHidden(folder)); //throws exception
+        System.out.println(Files.isHidden(folder)); //Dosya olmaması durumunda throws exception fırlatır
     }
 
     public static void test02() throws IOException {

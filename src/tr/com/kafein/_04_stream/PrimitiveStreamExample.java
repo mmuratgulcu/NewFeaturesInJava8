@@ -11,8 +11,11 @@ import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 public class PrimitiveStreamExample {
+
     public static void main(String[] args) {
+
         summaryStatistics();
+
     }
 
     public static void primitiveStreamSource() {
@@ -28,39 +31,55 @@ public class PrimitiveStreamExample {
     }
 
     public static void mapToInt() {
+
         Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5);
         IntStream intStream = integerStream.mapToInt(i -> i);
 
-        DoubleStream doubleStream = DoubleStream.of(1.2,2.3,4.5);
+        Stream<String> stringStream = Stream.of("1", "2", "3", "4", "5");
+        IntStream intStream2 = stringStream.mapToInt(i -> Integer.parseInt(i));
+
+        DoubleStream doubleStream = DoubleStream.of(1.2, 2.3, 4.5);
         IntStream intS = doubleStream.mapToInt(i -> (int) i);
         intStream.forEach(System.out::println);
-
-        Stream<String> stringStream = Stream.of("1","2","3","4","5");
-        //IntStream intStream1 = stringStream.mapToInt(Integer::parseInt);
-        IntStream intStream2 = stringStream.mapToInt(i -> Integer.parseInt(i));
 
     }
 
     public static void mapToLong() {
+
         Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5);
         LongStream intStream = integerStream.mapToLong(i -> i);
+
     }
 
     public static void mapToDouble() {
+
         Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5);
         DoubleStream intStream = integerStream.mapToDouble(i -> i);
+
     }
 
-    public static void average(){
+    public static void average() {
+
         IntStream intStream = IntStream.range(1, 3);
         OptionalDouble average = intStream.average();
         System.out.println(average.getAsDouble());
+
+    }
+
+    public static void minAndMax() {
+
+        IntStream is = IntStream.of(2, 4, 6, 10, -1, 100, 5, 200, -20, 50, 3);
+
+        System.out.println(is.max().getAsInt());
+        System.out.println(is.min().getAsInt());
+
     }
 
     public static void summaryStatistics() {
-        IntStream is = IntStream.range(1, 10).peek(System.out::println).limit(5);
+
+        IntStream is = IntStream.range(1, 10).peek(System.out::print);
         IntSummaryStatistics stat = is.summaryStatistics();
-        System.out.println("------------");
+        System.out.println("\n------------");
         System.out.println("Ortalama : " + stat.getAverage());
         System.out.println("Eleman sayısı : " + stat.getCount());
         System.out.println("Maximum değer : " + stat.getMax());
@@ -68,26 +87,21 @@ public class PrimitiveStreamExample {
         System.out.println("Toplam : " + stat.getSum());
 
         System.out.println("------------");
-        String limeck = "There was a young lady name asd";
-        IntSummaryStatistics stat2 = Pattern.compile(" ").splitAsStream(limeck)
-                .peek(System.out::println)
+
+        String content = "There was a young lady name Lima";
+        IntSummaryStatistics stat2 = Pattern.compile(" ").splitAsStream(content)
+                .peek(arg -> System.out.print(arg + " : "))
                 .mapToInt(String::length)
                 .peek(System.out::println)
                 .summaryStatistics();
 
-        System.out.println(stat.getAverage());
-        System.out.println(stat.getCount());
-        System.out.println(stat.getMax());
-        System.out.println(stat.getMin());
-        System.out.println(stat.getSum());
+        System.out.println("------------");
+
+        System.out.println("Ortalama : " + stat2.getAverage());
+        System.out.println("Eleman Sayısı : " + stat2.getCount());
+        System.out.println("Maximum Değer : " + stat2.getMax());
+        System.out.println("Minumum Değer : " + stat2.getMin());
+        System.out.println("Toplam : " + stat2.getSum());
 
     }
-
-    public static void minAndMax(){
-        IntStream is = IntStream.of(2, 4, 6, 10, -1, 100, 5, 200, -20, 50, 3);
-
-        System.out.println(is.max().getAsInt());
-        System.out.println(is.min().getAsInt());
-    }
-
 }

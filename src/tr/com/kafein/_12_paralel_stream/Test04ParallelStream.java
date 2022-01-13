@@ -28,8 +28,8 @@ public class Test04ParallelStream {
 	public static void main(String[] args) {		
 
 		WhaleDataCalculator calculator = new WhaleDataCalculator();
-		// Define the data
-		List<Integer> data = new ArrayList<Integer>();
+
+		List<Integer> data = new ArrayList<>();
 		for (int i = 0; i < 4000; i++)
 			data.add(i);
 		long start = System.currentTimeMillis();
@@ -37,7 +37,7 @@ public class Test04ParallelStream {
 
 		calculator.processAllDataParallel(data);
 		double time = (System.currentTimeMillis() - start) / 1000.0;
-		// Report results
+
 		System.out.println("\nTasks completed in: " + time + " seconds");
 	}
 }

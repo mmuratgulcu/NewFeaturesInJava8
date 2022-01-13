@@ -1,6 +1,7 @@
 package tr.com.kafein._10_executor_cyclebarrier;
 
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.concurrent.*;
 
 public class ExecutorServiceExample {
@@ -10,7 +11,7 @@ public class ExecutorServiceExample {
     }
 
     public static void singleThreadExecuteWithExecutorService() {
-        //Executors sınıfı üzerinden single thread olusturuldu.
+
         ExecutorService service = Executors.newSingleThreadExecutor();
 
         System.out.println("begin : " + Thread.currentThread().getName());
@@ -51,14 +52,15 @@ public class ExecutorServiceExample {
         //Threadi durdurduk.
         service.shutdown(); // executor üzerinde bir task var ise onu bitirmesini bekler.
         //service.shutDownNow(); // executor üzerinde bir taskın olup olmadığna bakmaksızın stop eder.
-        service.awaitTermination(5, TimeUnit.SECONDS); // executor'ın 5 sn sonra kapanmasını sağlar.
-        //
+        //service.awaitTermination(5, TimeUnit.SECONDS); // executor'ın 5 sn sonra kapanmasını sağlar.
+
         System.out.println("isDone : " + future.isDone());
         System.out.println("isShutdown : " + service.isShutdown());
         System.out.println("isTerminated : " + service.isTerminated());
     }
 
     public static void differenceBetweenRunnableAndCallable() throws ExecutionException, InterruptedException {
+
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
         Runnable runnable = () -> {

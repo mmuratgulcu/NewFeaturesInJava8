@@ -3,49 +3,51 @@ package tr.com.kafein._04_stream;
 import java.util.Optional;
 
 public class OptionalExample {
+
     public static void main(String[] args) {
 
+        orElseAndOrElseThrow();
 
     }
 
     public static void creatingOptional() {
+
         Optional<String> empty = Optional.empty();
-
         Optional<String> notEmpty = Optional.of("data");
+        Optional<String> nullStr = Optional.of(null);
+        Optional<String> nullableStr = Optional.ofNullable(null);
 
-        Optional<String> nullStr = Optional.of(null); //null pointer exception fırlatır
-
-        Optional<String> nullableStr = Optional.ofNullable(null); //empty döner
     }
 
-    public static void isPresentAndIfPresent(){
-        Optional<String> opt = Optional.of("kafein teknology");
+    public static void isPresentAndIfPresent() {
+        Optional<String> opt = Optional.of("Optional examples");
 
         if (opt.isPresent()) {
             System.out.println(opt.get());
+        } else {
+            System.out.println("empty");
         }
 
         opt.ifPresent(System.out::println);
 
-        Optional<String> empty = Optional.empty();
+        opt = Optional.empty();
 
-        if(!empty.isPresent()){
-            System.out.println("found!!");
+        if (opt.isPresent()) {
+            System.out.println(opt.get());
+        } else {
+            System.out.println("empty");
         }
     }
 
-    public static void orElseAndOrElseThrow(){
+    public static void orElseAndOrElseThrow() {
+
         Optional<String> opt1 = Optional.of("data");
 
-
-        System.out.println(opt1.map(String::length));
-        System.out.println(opt1.map(String::length).filter(x->x == 9).orElse(-1));
-
-        System.out.println(opt1.map(String::length).orElseThrow(RuntimeException::new));
+        System.out.println(opt1.map(x -> x.length()).filter(x -> x == 4).orElse(-1));
+        System.out.println(opt1.map(String::length).filter(x -> x == 4).orElseThrow(RuntimeException::new));
 
     }
 
-    //chaining Optional
     private static void threeDigit(Optional<Integer> optional) {
         if (optional.isPresent()) {
             Integer num = optional.get();
@@ -56,7 +58,6 @@ public class OptionalExample {
         }
     }
 
-    //chaining Optional
     private static void threeDigitBetter(Optional<Integer> optional) {
         optional.map(n -> n.toString()).filter(s -> s.length() == 3).ifPresent(System.out::println);
     }

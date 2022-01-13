@@ -8,10 +8,9 @@ import java.util.function.BiConsumer;
 public class BiConsumerExample {
     public static void main(String[] args) {
         BiConsumer<List<Integer>, Integer> bic1 = (List<Integer> list, Integer i) -> list.add(i);
-        //    boolean add(E e);
-
         BiConsumer<List<Integer>, Integer> listAddElement = List::add;
-        List aList = new ArrayList();
+
+        List<Integer> aList = new ArrayList<>();
         listAddElement.accept(aList, 10);
         System.out.println(aList);
     }

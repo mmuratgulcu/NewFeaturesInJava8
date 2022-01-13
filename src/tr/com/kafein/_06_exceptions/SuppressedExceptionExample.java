@@ -3,10 +3,10 @@ package tr.com.kafein._06_exceptions;
 public class SuppressedExceptionExample {
 
     public static void main(String[] args) {
-        getProductSuppressedExceptionMethod();
+        getSuppressedExceptionMethod();
     }
 
-    public static void nonProductSuppressedExceptionMethod() {
+    public static void nonSuppressedExceptionMethod() {
 
         try (Product product = new Product();
             User user = new User()) {
@@ -19,15 +19,17 @@ public class SuppressedExceptionExample {
 
     }
 
-    public static void getProductSuppressedExceptionMethod() {
+    public static void getSuppressedExceptionMethod() {
 
         try (Product product = new Product();
              User user = new User()) {
+
             System.out.println("try block..!");
             throw new IllegalArgumentException("First Illegal Argument Exception");
-        } catch (Exception exception) {
-            System.out.println("catch block..!");
 
+        } catch (Exception exception) {
+
+            System.out.println("catch block..!");
             System.out.println(exception.getMessage());
 
             for (Throwable throwable : exception.getSuppressed()) {
@@ -42,7 +44,7 @@ public class SuppressedExceptionExample {
 class Product implements AutoCloseable {
 
     @Override
-    public void close() throws Exception {
+    public void close() {
         System.out.println("Shut down..! Product");
         throw new IllegalStateException("Third Illegal Argument Exception");
     }
@@ -52,7 +54,7 @@ class Product implements AutoCloseable {
 class User implements AutoCloseable {
 
     @Override
-    public void close() throws Exception {
+    public void close() {
         System.out.println("Shut down..! User");
         throw new IllegalStateException("Second Illegal Argument Exception");
     }

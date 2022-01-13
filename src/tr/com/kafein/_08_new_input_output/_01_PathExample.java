@@ -12,6 +12,7 @@ public class _01_PathExample {
     }
 
     public static void test01() {
+
         Path path = Paths.get("/folder1/folder2/test.txt");
         //File file = new File("/folder1/folder2/test.txt");
 
@@ -23,9 +24,11 @@ public class _01_PathExample {
         System.out.println(path.getClass());
         System.out.println(path.subpath(0, 2)); // [beginIndex, endIndex)
         System.out.println(path.getFileSystem());
+
     }
 
     public static void test02(){
+
         Path path = Paths.get("/tr", "com", "kafein");
         System.out.println(path);
         File file = path.toFile();
@@ -34,9 +37,11 @@ public class _01_PathExample {
     }
 
     public static void test03(){
+
         Path path = Paths.get("../../folder/folder2/test.txt");
         System.out.println(path.isAbsolute());
         System.out.println(path.toAbsolutePath());
         System.out.println(path.toAbsolutePath().normalize());//Url'i düzenler gereksiz alanları kaldır.
+
     }
 }

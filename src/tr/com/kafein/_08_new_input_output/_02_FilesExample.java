@@ -15,7 +15,7 @@ public class _02_FilesExample {
     }
 
     public static void createFile() {
-        Path path = Paths.get("test2.txt");
+        Path path = Paths.get("test.txt");
 
         if (!Files.exists(path)) { //Dosyanın var olup olmadığını kontrol etmekte.
             try {
@@ -30,7 +30,7 @@ public class _02_FilesExample {
     public static void createDirectory() {
         Path path = Paths.get("folder");
 
-        if (!Files.exists(path)) { //Dosyanın var olup olmadığını kontrol etmekte.
+        if (!Files.exists(path)) { //Klasörün var olup olmadığını kontrol etmekte.
             try {
                 Files.createDirectory(path);
                 //Dosya yoksa oluşturur. Varsa FileAlreadyExistsException fırlatır.

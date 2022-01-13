@@ -10,7 +10,7 @@ import java.time.temporal.ChronoField;
 public class _02_LocalDateExample {
     public static void main(String[] args) {
 
-        parseOfDateToString();
+        getMethod();
 
     }
 

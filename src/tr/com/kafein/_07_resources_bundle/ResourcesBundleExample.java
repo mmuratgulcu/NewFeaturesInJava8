@@ -15,6 +15,9 @@ public class ResourcesBundleExample {
         String message = resourceBundle.getString("key1");
         System.out.println(message);
 
+        String message2 = resourceBundle.getString("key2");
+        System.out.println(message2);
+
         resourceBundle = ResourceBundle.getBundle("message", Locale.ENGLISH);
 
         message = resourceBundle.getString("key1");

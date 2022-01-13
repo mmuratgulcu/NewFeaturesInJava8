@@ -7,8 +7,8 @@ public class Message_en extends ListResourceBundle {
     @Override
     protected Object[][] getContents() {
         return new Object[][]{
-                {"key1","Welcome"},
-                {"key2", "God Bye!!"}
+                {"1","Welcome"},
+                {"2", "God Bye!!"}
         };
     }
 }
